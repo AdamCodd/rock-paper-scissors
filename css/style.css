@@ -1,0 +1,113 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.player-choice ul {
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.player-choice ul li,
+.game-wrapper ul li i {
+    border: 1px solid black;
+}
+
+.player-choice ul li i,
+.game-wrapper ul li i {
+    font-size: 5rem;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-choice ul li i:hover {
+    cursor: pointer;
+}
+
+/* Fallback for IE */
+.player-choice ul li i,
+.game-wrapper ul li i {
+    color: #f7a847;
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+
+    .player-choice ul li i,
+    .game-wrapper ul li i {
+        background: linear-gradient(15deg, #d9b80f, #f7a847);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}
+
+.replay {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 100px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.game-wrapper {
+    margin-top: 20px;
+    display: flex;
+}
+
+.game-wrapper ul {
+    list-style-type: none;
+}
+
+.player-selection,
+.computer-selection {
+    flex: 1 1 40%;
+}
+
+.spacer {
+    flex: 1 1 20%;
+}
+
+#three-choices-player li,
+#three-choices-computer li {
+    visibility: hidden;
+    position: absolute;
+}
+
+.visible {
+    visibility: visible !important;
+}
+
+.fa-hand-scissors {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
