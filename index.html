@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game: Rock Paper Scissors</title>
     <link href="css/style.css" rel="stylesheet">
-    <script src="game.js"></script>
+    <script defer src="game.js"></script>
     <script src="https://kit.fontawesome.com/7d039bd8ed.js" crossorigin="anonymous"></script>
 </head>
 
@@ -15,18 +15,32 @@
     <div class="wrapper">
         <h1>Game: Rock / Paper / Scissors</h1>
         <div class="player-choice">
-            <ul class="three-choices">
-                <li class="rock"><i class="fa-solid fa-hand-back-fist"></i></li>
-                <li class="paper"><i class="fa-solid fa-hand"></i></li>
-                <li class="scissors"><i class="fa-solid fa-hand-scissors"></i></li>
+            <ul id="three-choices">
+                <li class="choice1" title="Rock"><i class="fa-solid fa-hand-back-fist"></i></li>
+                <li class="choice2" title="Paper"><i class="fa-solid fa-hand"></i></li>
+                <li class="choice3" title="Scissors"><i class="fa-solid fa-hand-scissors"></i></li>
             </ul>
         </div>
-        <div class="game-wrapper">
-            <div class="player-selection"></div>
-            <div class="spacer"><i class="fa-solid fa-swords"></i></div>
-            <div class="computer-selection"></div>
-        </div>
         <button class="replay">Play</button>
+        <div class="game-wrapper">
+            <div class="player-selection">
+                <ul id="three-choices-player">
+                    <li class="Rock-player" title="Rock"><i class="fa-solid fa-hand-back-fist"></i></li>
+                    <li class="Paper-player" title="Paper"><i class="fa-solid fa-hand"></i></li>
+                    <li class="Scissors-player" title="Scissors"><i class="fa-solid fa-hand-scissors"></i></li>
+                </ul>
+                <p class="player-score"></p>
+            </div>
+            <div class="spacer"><i class="fa-solid fa-swords"></i></div>
+            <div class="computer-selection">
+                <ul id="three-choices-computer">
+                    <li class="Rock-computer" title="Rock"><i class="fa-solid fa-hand-back-fist"></i></li>
+                    <li class="Paper-computer" title="Paper"><i class="fa-solid fa-hand"></i></li>
+                    <li class="Scissors-computer" title="Scissors"><i class="fa-solid fa-hand-scissors"></i></li>
+                </ul>
+                <p class="computer-score"></p>
+            </div>
+        </div>
     </div>
 </body>
 
