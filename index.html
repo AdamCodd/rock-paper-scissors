@@ -21,28 +21,32 @@
                 <li class="choice3" title="Scissors"><i class="fa-solid fa-hand-scissors"></i></li>
             </ul>
         </div>
-        <button class="replay">Play</button>
+        <div class="game-buttons">
+            <button class="replay">Play</button>
+            <button class="reset">Reset</button>
+        </div>
         <p class="warning"></p>
         <div class="game-wrapper">
             <div class="player-selection">
+                <p class="player-score"></p>
                 <ul id="three-choices-player">
                     <li class="Rock-player" title="Rock"><i class="fa-solid fa-hand-back-fist"></i></li>
                     <li class="Paper-player" title="Paper"><i class="fa-solid fa-hand"></i></li>
                     <li class="Scissors-player" title="Scissors"><i class="fa-solid fa-hand-scissors"></i></li>
                 </ul>
-                <p class="player-score"></p>
             </div>
             <div class="spacer"><i class="fa-solid fa-khanda"></i></div>
             <div class="computer-selection">
+                <p class="computer-score"></p>
                 <ul id="three-choices-computer">
                     <li class="Rock-computer" title="Rock"><i class="fa-solid fa-hand-back-fist"></i></li>
                     <li class="Paper-computer" title="Paper"><i class="fa-solid fa-hand"></i></li>
                     <li class="Scissors-computer" title="Scissors"><i class="fa-solid fa-hand-scissors"></i></li>
                 </ul>
-                <p class="computer-score"></p>
             </div>
         </div>
         <div class="result-game"></div>
+        <div class="end-game"></div>
     </div>
 </body>
 
