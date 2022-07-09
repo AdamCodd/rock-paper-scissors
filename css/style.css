@@ -48,8 +48,6 @@ h1 {
 
 .game-wrapper .spacer i {
     font-size: 5rem;
-    width: 200px;
-    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,7 +75,6 @@ h1 {
 /* Shiny effect */
 .fa-khanda {
     position: sticky;
-    width: 200px;
     height: 200px;
     overflow: hidden;
     border-radius: 40%;
@@ -181,12 +178,9 @@ h1 {
 }
 
 .player-selection,
-.computer-selection {
-    flex: 1 1 40%;
-}
-
+.computer-selection,
 .spacer {
-    flex: 1 1 20%;
+    flex: 1;
 }
 
 #three-choices-player li,
