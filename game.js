@@ -104,7 +104,7 @@ playButton.addEventListener('click', () => {
     document.querySelector('.computer-score').innerHTML = `Score: <strong>${computerScore}</strong>`;
     document.querySelector('.player-score').innerHTML = `Score: <strong>${playerScore}</strong>`;
 
-    document.querySelector('.game-wrapper .spacer i') = "margin-top: 22px";
+    document.querySelector('.game-wrapper .spacer i').style.cssText = 'margin-top: 22px';
 
     if (computerScore < 5 && playerScore < 5) {
 
