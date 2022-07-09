@@ -129,7 +129,7 @@ h1 {
 }
 
 .replay {
-    font-family: fantasy;
+    font-family: initial;
     font-size: larger;
     width: 100px;
     height: 50px;
@@ -148,7 +148,7 @@ h1 {
 }
 
 .reset {
-    font-family: fantasy;
+    font-family: initial;
     font-size: larger;
     width: 100px;
     align-items: center;
