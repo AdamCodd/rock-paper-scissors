@@ -1,4 +1,4 @@
-// Game Logic
+/********  Game Logic  *********/
 
 let playerSelection;
 let computerSelection;
@@ -31,9 +31,9 @@ function playRound(playerSelection, computerSelection) {
     return resultPlay;
 }
 
-// Game UI
+/********  Game UI  *********/
 
-// Reset button
+// Hide the reset button
 document.querySelector('.reset').style.display = "none";
 
 // Showing card of the player 
