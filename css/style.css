@@ -46,13 +46,6 @@ h1 {
     align-items: center;
 }
 
-.game-wrapper .spacer i {
-    font-size: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .fa-hand-scissors {
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
@@ -71,6 +64,13 @@ h1 {
     color: #f7a847;
 }
 
+.game-wrapper .spacer i {
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 22px;
+}
 
 /* Shiny effect */
 .fa-khanda {
