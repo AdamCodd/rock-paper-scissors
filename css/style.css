@@ -114,8 +114,14 @@ h1 {
     }
 }
 
+.game-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
 
-.replay:hover {
+.replay:hover,
+.reset:hover {
     cursor: pointer;
     box-shadow: none;
     box-shadow: 1px -1px 9px #515151 inset;
@@ -125,10 +131,6 @@ h1 {
 .replay {
     font-family: fantasy;
     font-size: larger;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    margin: auto;
     width: 100px;
     height: 50px;
     margin-top: 20px;
@@ -137,6 +139,28 @@ h1 {
     border: 1px solid darkorange;
     border-radius: 10px;
 }
+
+.replay:disabled,
+.replay[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
+.reset {
+    font-family: fantasy;
+    font-size: larger;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin-top: 20px;
+    background: #4ed3b7;
+    box-shadow: 1px -1px 4px #515151 inset;
+    border: 1px solid #70583b;
+    border-radius: 10px;
+}
+
 
 .warning {
     text-align: center;
@@ -171,6 +195,14 @@ h1 {
     position: absolute;
 }
 
+.player-score,
+.computer-score {
+    text-align: center;
+    margin-right: 20px;
+    font-size: larger;
+    visibility: hidden;
+}
+
 .visible {
     visibility: visible !important;
 }
@@ -178,6 +210,7 @@ h1 {
 .result-game {
     padding-top: 40px;
 }
+
 
 .win-game,
 .draw-game,
