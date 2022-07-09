@@ -171,6 +171,7 @@ h1 {
 .game-wrapper {
     margin-top: 20px;
     display: flex;
+    gap: 20px;
 }
 
 .game-wrapper ul {
@@ -180,7 +181,9 @@ h1 {
 .player-selection,
 .computer-selection,
 .spacer {
-    flex: 1;
+    flex: auto;
+    max-width: 200px;
+    margin: 0 auto;
 }
 
 #three-choices-player li,
