@@ -32,7 +32,8 @@ h1 {
 
 .player-choice ul li,
 .game-wrapper ul li i {
-    border: 1px solid black;
+    border: 2px solid #868686;
+    border-radius: 15px;
 }
 
 .player-choice ul li i,
@@ -45,6 +46,23 @@ h1 {
     align-items: center;
 }
 
+.game-wrapper .spacer i {
+    font-size: 5rem;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-hand-scissors {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
 .player-choice ul li i:hover {
     cursor: pointer;
 }
@@ -53,6 +71,36 @@ h1 {
 .player-choice ul li i,
 .game-wrapper ul li i {
     color: #f7a847;
+}
+
+
+/* Shiny effect */
+.fa-khanda {
+    position: sticky;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 40%;
+}
+
+.spacer .fa-khanda::after {
+    background: rgba(255, 255, 255, 0.6);
+    transform: skew(-50deg);
+    position: absolute;
+    content: "";
+    width: 120px;
+    animation: shine 3s ease infinite;
+    height: 500px;
+}
+
+@keyframes shine {
+    from {
+        left: -500px;
+    }
+
+    to {
+        left: 655px;
+    }
 }
 
 @supports (background-clip: text) or (-webkit-background-clip: text) {
@@ -66,7 +114,17 @@ h1 {
     }
 }
 
+
+.replay:hover {
+    cursor: pointer;
+    box-shadow: none;
+    box-shadow: 1px -1px 9px #515151 inset;
+    transition: .2s;
+}
+
 .replay {
+    font-family: fantasy;
+    font-size: larger;
     justify-content: center;
     display: flex;
     align-items: center;
@@ -74,6 +132,19 @@ h1 {
     width: 100px;
     height: 50px;
     margin-top: 20px;
+    background: gold;
+    box-shadow: 1px -1px 4px #515151 inset;
+    border: 1px solid darkorange;
+    border-radius: 10px;
+}
+
+.warning {
+    text-align: center;
+    font-size: large;
+    color: darkred;
+    font-weight: bold;
+    margin-top: 15px;
+    visibility: hidden;
 }
 
 .game-wrapper {
@@ -104,10 +175,27 @@ h1 {
     visibility: visible !important;
 }
 
-.fa-hand-scissors {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    transform: rotate(90deg);
+.result-game {
+    padding-top: 40px;
+}
+
+.win-game,
+.draw-game,
+.lose-game {
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.win-game {
+    color: darkgreen;
+}
+
+.draw-game {
+    color: #333;
+}
+
+.lose-game {
+    color: darkred;
 }
