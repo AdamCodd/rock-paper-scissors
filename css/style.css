@@ -215,6 +215,7 @@ h1 {
 .win-game,
 .draw-game,
 .lose-game {
+    font-family: monospace;
     text-align: center;
     font-size: large;
     font-weight: bold;
