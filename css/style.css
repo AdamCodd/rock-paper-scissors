@@ -19,6 +19,8 @@ body {
 h1 {
     text-align: center;
     padding-top: 20px;
+    font-family: 'Font Awesome 6 Free';
+    letter-spacing: 3px;
 }
 
 .player-choice ul {
@@ -113,6 +115,7 @@ h1 {
 .game-buttons {
     display: flex;
     gap: 15px;
+    margin: 40px 0;
     justify-content: center;
 }
 
@@ -129,7 +132,6 @@ h1 {
     font-size: larger;
     width: 100px;
     height: 50px;
-    margin-top: 20px;
     background: gold;
     box-shadow: 1px -1px 4px #515151 inset;
     border: 1px solid darkorange;
@@ -150,7 +152,6 @@ h1 {
     align-items: center;
     justify-content: center;
     height: 50px;
-    margin-top: 20px;
     background: #4ed3b7;
     box-shadow: 1px -1px 4px #515151 inset;
     border: 1px solid #70583b;
@@ -163,12 +164,12 @@ h1 {
     font-size: large;
     color: darkred;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: 10px;
     visibility: hidden;
 }
 
 .game-wrapper {
-    margin-top: 20px;
+
     display: flex;
     gap: 20px;
 }
@@ -228,4 +229,37 @@ h1 {
 
 .lose-game {
     color: darkred;
+}
+
+#copyright {
+    padding: 40px 0px 20px 0;
+    font-size: 1.2em;
+    display: block;
+}
+
+/* Media queries */
+@media only screen and (orientation: portrait) and (max-width: 600px) {
+    .game-wrapper {
+        flex-direction: column;
+        margin-top: 50px;
+    }
+
+    .end-game {
+        margin-top: 20px;
+    }
+
+    .game-buttons {
+        margin-bottom: 0px;
+    }
+
+    .player-selection,
+    .computer-selection,
+    .spacer {
+        max-height: 200px;
+    }
+
+    .game-wrapper ul {
+        height: 200px;
+        width: 200px;
+    }
 }
