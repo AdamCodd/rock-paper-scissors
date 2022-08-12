@@ -1,28 +1,27 @@
 /********  Game Logic  *********/
-
-let playerSelection;
-let computerSelection;
-let playChoice = ['ROCK', 'PAPER', 'SCISSORS'];
-
-function computerPlay() {
-    return playChoice[Math.floor(Math.random() * 3)];
-}
+const playChoice = ['ROCK', 'PAPER', 'SCISSORS'];
+let playerSelection = '';
+let computerSelection = '';
 
 let playerScore = 0;
 let computerScore = 0;
 let resultPlay = '';
 
+function computerPlay() {
+    return (() => playChoice[Math.floor(Math.random() * 3)])();
+}
+
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         resultPlay = "Draw! The computer used " + computerSelection + " too!";
     }
-    if ((playerSelection === "PAPER" && computerSelection === "ROCK") ||
+    else if ((playerSelection === "PAPER" && computerSelection === "ROCK") ||
         (playerSelection === "SCISSORS" && computerSelection === "PAPER") ||
         (playerSelection === "ROCK" && computerSelection === "SCISSORS")) {
         ++playerScore;
         resultPlay = "You win! Your " + playerSelection + " beats " + computerSelection;
     }
-    if ((computerSelection === "PAPER" && playerSelection === "ROCK") ||
+    else if ((computerSelection === "PAPER" && playerSelection === "ROCK") ||
         (computerSelection === "SCISSORS" && playerSelection === "PAPER") ||
         (computerSelection === "ROCK" && playerSelection === "SCISSORS")) {
         ++computerScore;
@@ -33,92 +32,57 @@ function playRound(playerSelection, computerSelection) {
 
 /********  Game UI  *********/
 
-// Hide the reset button
-document.querySelector('.reset').style.display = "none";
-
 // Showing card of the player 
-let allChoices = document.querySelectorAll("#three-choices li");
-allChoices.forEach(item => {
-    if (item) {
-        item.addEventListener('click', () => {
-            playerSelection = item.getAttribute('title').toUpperCase();
+const allChoices = document.querySelectorAll("#three-choices li");
+const playerCards = document.querySelectorAll('.player-selection li');
+const computerCards = document.querySelectorAll('.computer-selection li');
+const warning = document.querySelector('.warning');
 
-            if (item.getAttribute('title') === "Rock") {
-                document.querySelector('.Rock-player').classList.add('visible');
-                document.querySelector('.Paper-player').classList.remove('visible');
-                document.querySelector('.Scissors-player').classList.remove('visible');
-                document.querySelector('.warning').classList.remove('visible');
-            }
+function showChoice(cards) {
+    return function (e) {
+        cards.forEach(card => card.classList.remove('visible'));
+        let choice;
 
-            if (item.getAttribute('title') === "Paper") {
-                document.querySelector('.Paper-player').classList.add('visible');
-                document.querySelector('.Rock-player').classList.remove('visible');
-                document.querySelector('.Scissors-player').classList.remove('visible');
-                document.querySelector('.warning').classList.remove('visible');
-            }
-
-            if (item.getAttribute('title') === "Scissors") {
-                document.querySelector('.Scissors-player').classList.add('visible');
-                document.querySelector('.Rock-player').classList.remove('visible');
-                document.querySelector('.Paper-player').classList.remove('visible');
-                document.querySelector('.warning').classList.remove('visible');
-            }
-        })
-
-    }
-})
-
-// Showing computer card + Scores (until 5) then the winner.
-let playButton = document.querySelector(".replay");
-playButton.addEventListener('click', () => {
-    computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection);
-    if (playerSelection) {
-        document.querySelector('.player-score').classList.add('visible');
-        document.querySelector('.computer-score').classList.add('visible');
-
-        if (computerSelection === "ROCK" && playerSelection) {
-            document.querySelector('.Rock-computer').classList.add('visible');
-            document.querySelector('.Paper-computer').classList.remove('visible');
-            document.querySelector('.Scissors-computer').classList.remove('visible');
+        if (cards === playerCards) {
+            warning.classList.remove('visible');
+            choice = e.currentTarget.getAttribute('title');
+            playerSelection = choice.toUpperCase();
+            document.querySelector(`.${choice}-player`).classList.add('visible');
         }
 
-        if (computerSelection === "PAPER" && playerSelection) {
-            document.querySelector('.Paper-computer').classList.add('visible');
-            document.querySelector('.Rock-computer').classList.remove('visible');
-            document.querySelector('.Scissors-computer').classList.remove('visible');
-        }
+        else if (cards === computerCards) {
+            // Warning if no card was selected
+            if (playerSelection === '') {
+                warning.innerHTML = "You must choose a card before playing the game!";
+                warning.classList.add('visible');
+                return;
+            }
+            computerSelection = computerPlay();
+            playRound(playerSelection, computerSelection);
 
-        if (computerSelection === "SCISSORS" && playerSelection) {
-            document.querySelector('.Scissors-computer').classList.add('visible');
-            document.querySelector('.Rock-computer').classList.remove('visible');
-            document.querySelector('.Paper-computer').classList.remove('visible');
+            choice = computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1).toLowerCase();
+            document.querySelector(`.${choice}-computer`).classList.add('visible');
+            playerSelection == '';
+            updateScore();
         }
     }
-    else {
-        document.querySelector('.warning').innerHTML = "You must choose a card before playing the game!";
-        document.querySelector('.warning').classList.add('visible');
-    }
+}
 
-    //Update score
+function updateScore() {
     document.querySelector('.computer-score').innerHTML = `Score: <strong>${computerScore}</strong>`;
     document.querySelector('.player-score').innerHTML = `Score: <strong>${playerScore}</strong>`;
-
-    document.querySelector('.game-wrapper .spacer i').style.cssText = 'margin-top: 22px';
-
-    if (computerScore < 5 && playerScore < 5) {
-
-        if (resultPlay.includes('win')) {
-            document.querySelector('.result-game').innerHTML = `<p class="win-game">${resultPlay}</p>`;
-        }
-        if (resultPlay.includes('lose')) {
-            document.querySelector('.result-game').innerHTML = `<p class="lose-game">${resultPlay}</p>`;
-        }
-        if (resultPlay.includes('Draw')) {
-            document.querySelector('.result-game').innerHTML = `<p class="draw-game">${resultPlay}</p>`;
-        }
+    // Display the score then the winner of each turn. When one reaches 5 the game stops.
+    if (resultPlay.includes('win')) {
+        document.querySelector('.result-game').innerHTML = `<p class="win-game">${resultPlay}</p>`;
     }
-    else {
+    if (resultPlay.includes('lose')) {
+        document.querySelector('.result-game').innerHTML = `<p class="lose-game">${resultPlay}</p>`;
+    }
+    if (resultPlay.includes('Draw')) {
+        document.querySelector('.result-game').innerHTML = `<p class="draw-game">${resultPlay}</p>`;
+    }
+
+    if (computerScore === 5 || playerScore === 5) {
         playButton.setAttribute('disabled', '');
         document.querySelector('.reset').style.cssText = 'display:initial !important';
         if (computerScore > playerScore) {
@@ -128,34 +92,33 @@ playButton.addEventListener('click', () => {
             document.querySelector('.end-game').innerHTML = `<p class="win-game">Great! You won the game. Click on reset to replay.</p>`;
         }
     }
+}
+
+allChoices.forEach(item => {
+    item.addEventListener('click', showChoice(playerCards));
 })
 
-// Reset the game: remove the score and cards
+const playButton = document.querySelector(".replay");
+playButton.addEventListener('click', showChoice(computerCards));
 
-let resetButton = document.querySelector(".reset");
-
-resetButton.addEventListener('click', () => {
+function reset() {
     playerScore = 0;
     computerScore = 0;
     resultPlay = '';
     playerSelection = '';
-
+    computerSelection = '';
     playButton.disabled = false;
-    document.querySelector('.reset').style.cssText = 'display:none !important';
 
+    document.querySelector('.reset').style.cssText = 'display:none !important';
     document.querySelector('.end-game').innerHTML = '';
     document.querySelector('.result-game').innerHTML = '';
     document.querySelector('.computer-score').innerHTML = '';
     document.querySelector('.player-score').innerHTML = '';
 
-    document.querySelector('.Rock-player').classList.remove('visible');
-    document.querySelector('.Paper-player').classList.remove('visible');
-    document.querySelector('.Scissors-player').classList.remove('visible');
+    playerCards.forEach(cardp => cardp.classList.remove('visible'));
+    computerCards.forEach(cardc => cardc.classList.remove('visible'));
+}
 
-    document.querySelector('.Rock-computer').classList.remove('visible');
-    document.querySelector('.Paper-computer').classList.remove('visible');
-    document.querySelector('.Scissors-computer').classList.remove('visible');
-
-    document.querySelector('.player-score').classList.remove('visible');
-    document.querySelector('.computer-score').classList.remove('visible');
-})
+// Reset the game: remove the score and cards
+const resetButton = document.querySelector('.reset');
+resetButton.addEventListener('click', reset);

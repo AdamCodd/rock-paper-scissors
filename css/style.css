@@ -14,6 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    user-select: none;
 }
 
 h1 {
@@ -60,12 +61,6 @@ h1 {
     cursor: pointer;
 }
 
-/* Fallback for IE */
-.player-choice ul li i,
-.game-wrapper ul li i {
-    color: #f7a847;
-}
-
 .game-wrapper .spacer i {
     font-size: 5rem;
     display: flex;
@@ -99,6 +94,12 @@ h1 {
     to {
         left: 655px;
     }
+}
+
+/* Fallback for IE */
+.player-choice ul li i,
+.game-wrapper ul li i {
+    color: #f7a847;
 }
 
 @supports (background-clip: text) or (-webkit-background-clip: text) {
@@ -146,6 +147,7 @@ h1 {
 }
 
 .reset {
+    display: none;
     font-family: initial;
     font-size: larger;
     width: 100px;
@@ -197,7 +199,6 @@ h1 {
     text-align: center;
     margin-right: 20px;
     font-size: larger;
-    visibility: hidden;
 }
 
 .visible {
